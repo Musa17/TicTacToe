@@ -16,7 +16,7 @@
             <Setter Property="FontSize" Value="70"></Setter>
         </Style>
     </Window.Resources>
-    
+
     <Grid x:Name="Container">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>

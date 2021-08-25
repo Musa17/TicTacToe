@@ -51,6 +51,11 @@ namespace Tic_Tac_Toe
                 button.Foreground = Brushes.Blue;
             });
 
+            var textblock = (TextBlock)MainGrid.FindName("ResultText");
+                
+            textblock.Text = "Player 1";
+            textblock.Foreground = Brushes.Blue;
+
             mGameEnded = false;
         }
 
@@ -63,6 +68,8 @@ namespace Tic_Tac_Toe
             }
 
             var button = (Button)sender;
+
+            var textblock = (TextBlock)MainGrid.FindName("ResultText");
 
             var column = Grid.GetColumn(button);
             var row = Grid.GetRow(button);
@@ -83,6 +90,17 @@ namespace Tic_Tac_Toe
                 button.Foreground = Brushes.Red;
             }
 
+            if (mPlayer1Turn)
+            {
+                textblock.Text = "Player 2";
+                textblock.Foreground = Brushes.Red;
+            }
+            else
+            {
+                textblock.Text = "Player 1";
+                textblock.Foreground = Brushes.Blue;
+            }
+
             mPlayer1Turn ^= true;
 
             CheckForWinner();
@@ -90,6 +108,8 @@ namespace Tic_Tac_Toe
 
         private void CheckForWinner()
         {
+            var textblock = (TextBlock)MainGrid.FindName("ResultText");
+
             #region Horizontal wins
             // Check for horizontal wins
             // Row 0
@@ -99,6 +119,9 @@ namespace Tic_Tac_Toe
                 mGameEnded = true;
 
                 Button0_0.Background = Button0_1.Background = Button0_2.Background = Brushes.Green;
+
+                textblock.Text = "Winner !!";
+                textblock.Foreground = Brushes.Green;
             }
 
             // Row 1
@@ -108,6 +131,9 @@ namespace Tic_Tac_Toe
                 mGameEnded = true;
 
                 Button1_0.Background = Button1_1.Background = Button1_2.Background = Brushes.Green;
+
+                textblock.Text = "Winner !!";
+                textblock.Foreground = Brushes.Green;
             }
 
             // Row 2
@@ -117,6 +143,9 @@ namespace Tic_Tac_Toe
                 mGameEnded = true;
 
                 Button2_0.Background = Button2_1.Background = Button2_2.Background = Brushes.Green;
+
+                textblock.Text = "Winner !!";
+                textblock.Foreground = Brushes.Green;
             }
             #endregion
 
@@ -129,6 +158,9 @@ namespace Tic_Tac_Toe
                 mGameEnded = true;
 
                 Button0_0.Background = Button1_0.Background = Button2_0.Background = Brushes.Green;
+
+                textblock.Text = "Winner !!";
+                textblock.Foreground = Brushes.Green;
             }
 
             // Column 1
@@ -138,6 +170,9 @@ namespace Tic_Tac_Toe
                 mGameEnded = true;
 
                 Button0_1.Background = Button1_1.Background = Button2_1.Background = Brushes.Green;
+
+                textblock.Text = "Winner !!";
+                textblock.Foreground = Brushes.Green;
             }
 
             // Column 2
@@ -147,6 +182,9 @@ namespace Tic_Tac_Toe
                 mGameEnded = true;
 
                 Button0_2.Background = Button1_2.Background = Button2_2.Background = Brushes.Green;
+
+                textblock.Text = "Winner !!";
+                textblock.Foreground = Brushes.Green;
             }
             #endregion
 
@@ -159,6 +197,9 @@ namespace Tic_Tac_Toe
                 mGameEnded = true;
 
                 Button0_0.Background = Button1_1.Background = Button2_2.Background = Brushes.Green;
+
+                textblock.Text = "Winner !!";
+                textblock.Foreground = Brushes.Green;
             }
 
             // Diagonal 1
@@ -168,6 +209,9 @@ namespace Tic_Tac_Toe
                 mGameEnded = true;
 
                 Button0_2.Background = Button1_1.Background = Button2_0.Background = Brushes.Green;
+
+                textblock.Text = "Winner !!";
+                textblock.Foreground = Brushes.Green;
             }
             #endregion
 
@@ -180,6 +224,9 @@ namespace Tic_Tac_Toe
                 Container.Children.Cast<Button>().ToList().ForEach(button =>
                 {
                     button.Background = Brushes.Orange;
+
+                    textblock.Text = "Draw !!";
+                    textblock.Foreground = Brushes.Orange;
                 });
             }
             #endregion
